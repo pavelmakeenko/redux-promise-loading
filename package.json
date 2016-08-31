@@ -1,10 +1,11 @@
 {
   "name": "redux-promise-loading",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Redux middleware and reducer for handling redux promise loading indicator",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"prepublish": "make clean build"
   },
   "keywords": [
     "redux",
@@ -17,6 +18,13 @@
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/amorphousxd/redux-promise-loading.git"
+  },
+	"devDependencies": {
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.15",
+    "babel-eslint": "^5.0.0",
+    "eslint": "^0.24.0",
+    "eslint-config-airbnb": "0.0.6"
   },
   "author": "Pavel Makeenko <amorphousxd@gmail.com>",
   "license": "MIT"
