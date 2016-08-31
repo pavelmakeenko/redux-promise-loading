@@ -1,0 +1,23 @@
+{
+  "name": "redux-promise-loading",
+  "version": "0.0.1",
+  "description": "Redux middleware and reducer for handling redux promise loading indicator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redux",
+    "redux-promise-loading",
+    "promise",
+    "loading",
+    "flux-standard-action",
+    "redux-loading-indicator"
+  ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/amorphousxd/redux-promise-loading.git"
+  },
+  "author": "Pavel Makeenko <amorphousxd@gmail.com>",
+  "license": "MIT"
+}
