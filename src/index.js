@@ -3,21 +3,27 @@ const DEC = 'loadingReducer/dec';
 
 const initialState = {
   isLoading: false,
-  operationsCount: 0
+  operationsCount: 0,
+  loadingTypes: [],
 };
 
 export function loadingReducer(state = initialState, action = {}) {
-  let { operationsCount, isLoading } = state;
+  let { operationsCount, isLoading, loadingTypes } = state;
+  const { payload } = action;
 
   switch (action.type) {
     case INC:
+      loadingTypes.push(payload);
       operationsCount += 1;
       return {
         ...state,
         isLoading: true,
-        operationsCount
+        operationsCount,
+        loadingTypes
       };
     case DEC:
+      const index = loadingTypes.indexOf(payload);
+      loadingTypes.splice(index, 1);
       operationsCount -= 1;
       if (operationsCount === 0) {
         isLoading = false;
@@ -25,7 +31,8 @@ export function loadingReducer(state = initialState, action = {}) {
       return {
         ...state,
         operationsCount,
-        isLoading
+        isLoading,
+        loadingTypes
       };
     default:
       return state;
@@ -38,13 +45,13 @@ function isPromise(val) {
 
 export function loadingMiddleware(options) {
   return ({dispatch}) => (next) => (action) => {
-    const { meta, payload } = action;
+    const { meta, payload, type } = action;
 
     if (meta && meta.loading) {
       if (isPromise(payload)) {
-        dispatch({type: INC});
+        dispatch({type: INC, payload: type});
       } else {
-        dispatch({type: DEC});
+        dispatch({type: DEC, payload: type});
       }
     }
 
